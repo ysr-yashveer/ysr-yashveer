@@ -14,19 +14,29 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
-      - name: Generate GitHub Trophy
+      - name: Generate trophy
         uses: Erik-Donath/github-profile-trophy@feature/generate-svg
         with:
           username: ysr-yashveer
-          output_path: profile/trophy.svg
           token: ${{ secrets.GITHUB_TOKEN }}
+          file: profile/trophy.svg
+          theme: tokyonight
+          max-cols: 6
+          max-rows: 1
+          no-frame: true
 
       - name: Commit trophy
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add profile/trophy.svg
-          git diff --cached --quiet || git commit -m "Update GitHub trophy"
-          git push
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update GitHub trophy"
+            git push
+          fi
