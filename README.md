@@ -84,7 +84,7 @@
 ## 🏆 Achievements & Badges
 
 <p align="center">
-  <img src="https://github-profile-trophy-liard-delta.vercel.app/?username=ysr-yashveer&theme=tokyonight&no-frame=true&row=1&column=6" />
+  <img src="./profile/trophy.svg" alt="GitHub Trophy" />
 </p>
 
 ## 📈 Contribution Graph
